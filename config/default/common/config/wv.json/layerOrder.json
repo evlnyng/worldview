@@ -1,5 +1,82 @@
 {
     "layerOrder": [
+        "OrbitTracks_Aqua_Ascending",
+        "OrbitTracks_Aqua_Descending",
+        "OrbitTracks_Aura_Ascending",
+        "OrbitTracks_Aura_Descending",
+        "OrbitTracks_Calipso_Ascending",
+        "OrbitTracks_Calipso_Descending",
+        "OrbitTracks_CloudSat_Ascending",
+        "OrbitTracks_CloudSat_Descending",
+        "OrbitTracks_CYGNSS_Ascending",
+        "OrbitTracks_CYGNSS_Descending",
+        "OrbitTracks_GCOM-C_Ascending",
+        "OrbitTracks_GCOM-C_Descending",
+        "OrbitTracks_GCOM-W1_Ascending",
+        "OrbitTracks_GCOM-W1_Descending",
+        "OrbitTracks_GOSAT-2_Ascending",
+        "OrbitTracks_GOSAT-2_Descending",
+        "OrbitTracks_GOSAT_Ascending",
+        "OrbitTracks_GOSAT_Descending",
+        "OrbitTracks_GPM_Ascending",
+        "OrbitTracks_GPM_Descending",
+        "OrbitTracks_ICESAT-2_Ascending",
+        "OrbitTracks_ICESAT-2_Descending",
+        "OrbitTracks_ISS_Ascending",
+        "OrbitTracks_ISS_Descending",
+        "OrbitTracks_Landsat-7_Ascending",
+        "OrbitTracks_Landsat-7_Descending",
+        "OrbitTracks_Landsat-8_Ascending",
+        "OrbitTracks_Landsat-8_Descending",
+        "OrbitTracks_METOP-A_Ascending",
+        "OrbitTracks_METOP-A_Descending",
+        "OrbitTracks_METOP-B_Ascending",
+        "OrbitTracks_METOP-B_Descending",
+        "OrbitTracks_METOP-C_Ascending",
+        "OrbitTracks_METOP-C_Descending",
+        "OrbitTracks_NOAA-20_Ascending",
+        "OrbitTracks_NOAA-20_Descending",
+        "OrbitTracks_OCO-2_Ascending",
+        "OrbitTracks_OCO-2_Descending",
+        "OrbitTracks_SAOCOM1-A_Ascending",
+        "OrbitTracks_SAOCOM1-A_Descending",
+        "OrbitTracks_Sentinel-1A_Ascending",
+        "OrbitTracks_Sentinel-1A_Descending",
+        "OrbitTracks_Sentinel-1B_Ascending",
+        "OrbitTracks_Sentinel-1B_Descending",
+        "OrbitTracks_Sentinel-2A_Ascending",
+        "OrbitTracks_Sentinel-2A_Descending",
+        "OrbitTracks_Sentinel-2B_Ascending",
+        "OrbitTracks_Sentinel-2B_Descending",
+        "OrbitTracks_Sentinel-5P_Ascending",
+        "OrbitTracks_Sentinel-5P_Descending",
+        "OrbitTracks_SMAP_Ascending",
+        "OrbitTracks_SMAP_Descending",
+        "OrbitTracks_Suomi_NPP_Ascending",
+        "OrbitTracks_Suomi_NPP_Descending",
+        "OrbitTracks_Terra_Ascending",
+        "OrbitTracks_Terra_Descending",
+        "MODIS_Aqua_Thermal_Anomalies_All_v6_NRT-2km",
+        "MODIS_Aqua_Thermal_Anomalies_Day_v6_NRT-2km",
+        "MODIS_Aqua_Thermal_Anomalies_Night_v6_NRT-2km",
+        "MODIS_Combined_Thermal_Anomalies_All_v6_NRT-2km",
+        "MODIS_Combined_Thermal_Anomalies_Day_v6_NRT-2km",
+        "MODIS_Combined_Thermal_Anomalies_Night_v6_NRT-2km",
+        "MODIS_Terra_Thermal_Anomalies_All_v6_NRT-2km",
+        "MODIS_Terra_Thermal_Anomalies_Day_v6_NRT-2km",
+        "MODIS_Terra_Thermal_Anomalies_Night_v6_NRT-2km",
+        "VIIRS_SNPP_Thermal_Anomalies_375m_All_v1_NRT",
+        "VIIRS_SNPP_Thermal_Anomalies_375m_Day_v1_NRT",
+        "VIIRS_SNPP_Thermal_Anomalies_375m_Night_v1_NRT",
+        "MODIS_Aqua_Thermal_Anomalies_All_v6_NRT",
+        "MODIS_Aqua_Thermal_Anomalies_Day_v6_NRT",
+        "MODIS_Aqua_Thermal_Anomalies_Night_v6_NRT",
+        "MODIS_Combined_Thermal_Anomalies_All_v6_NRT",
+        "MODIS_Combined_Thermal_Anomalies_Day_v6_NRT",
+        "MODIS_Combined_Thermal_Anomalies_Night_v6_NRT",
+        "MODIS_Terra_Thermal_Anomalies_All_v6_NRT",
+        "MODIS_Terra_Thermal_Anomalies_Day_v6_NRT",
+        "MODIS_Terra_Thermal_Anomalies_Night_v6_NRT",
         "VIIRS_SNPP_CorrectedReflectance_TrueColor",
         "VIIRS_SNPP_CorrectedReflectance_BandsM3-I3-M11",
         "VIIRS_SNPP_CorrectedReflectance_BandsM11-I2-I1",
@@ -31,14 +108,12 @@
         "Land_Water_Map",
         "MODIS_Terra_L3_Land_Water_Mask",
         "MODIS_Combined_L3_IGBP_Land_Cover_Type_Annual",
-
         "VIIRS_SNPP_Thermal_Anomalies_375m_Day",
         "VIIRS_SNPP_Thermal_Anomalies_375m_Night",
         "VIIRS_SNPP_DayNightBand_ENCC",
         "VIIRS_Night_Lights",
         "VIIRS_SNPP_Brightness_Temp_BandI5_Day",
         "VIIRS_SNPP_Brightness_Temp_BandI5_Night",
-
         "GOES-East_ABI_Band2_Red_Visible",
         "GOES-West_ABI_Band2_Red_Visible",
         "Himawari_AHI_Band3_Red_Visible",
@@ -48,11 +123,9 @@
         "GOES-East_ABI_Air_Mass",
         "GOES-West_ABI_Air_Mass",
         "Himawari_AHI_Air_Mass",
-        
         "GHRSST_L4_G1SST_Sea_Surface_Temperature",
         "GHRSST_L4_MUR_Sea_Surface_Temperature",
         "GHRSST_L4_AVHRR-OI_Sea_Surface_Temperature",
-
         "MODIS_Terra_Aerosol",
         "MODIS_Aqua_Aerosol",
         "MODIS_Combined_Value_Added_AOD",
@@ -198,7 +271,6 @@
         "MODIS_Aqua_L4_Gross_Primary_Productivity_8Day",
         "MODIS_Terra_L4_Net_Photosynthesis_8Day",
         "MODIS_Aqua_L4_Net_Photosynthesis_8Day",
-
         "MODIS_Terra_L3_SST_MidIR_4km_Night_Daily",
         "MODIS_Terra_L3_SST_MidIR_4km_Night_8Day",
         "MODIS_Terra_L3_SST_MidIR_4km_Night_Monthly",
@@ -247,7 +319,6 @@
         "MODIS_Aqua_L3_SST_Thermal_9km_Night_8Day",
         "MODIS_Aqua_L3_SST_Thermal_9km_Night_Monthly",
         "MODIS_Aqua_L3_SST_Thermal_9km_Night_Annual",
-
         "Landsat_WELD_CorrectedReflectance_TrueColor_Global_Monthly",
         "Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual",
         "Landsat_WELD_NDVI_Global_Monthly",
@@ -259,18 +330,15 @@
         "Landsat_WELD_CorrectedReflectance_TrueColor_CONUS_Seasonal",
         "Landsat_WELD_CorrectedReflectance_TrueColor_CONUS_Annual",
         "Landsat_WELD_CONUS_5_Year_Tree_Cover",
-
         "IMERG_Rain_Rate",
         "IMERG_Snow_Rate",
         "IMERG_Precipitation_Rate",
-
         "GMI_Brightness_Temp_Asc",
         "GMI_Brightness_Temp_Dsc",
         "GMI_Rain_Rate_Asc",
         "GMI_Rain_Rate_Dsc",
         "GMI_Snow_Rate_Asc",
         "GMI_Snow_Rate_Dsc",
-
         "AMSR2_Cloud_Liquid_Water_Day",
         "AMSR2_Cloud_Liquid_Water_Night",
         "AMSR2_Columnar_Water_Vapor_Day",
@@ -281,7 +349,6 @@
         "AMSR2_Surface_Rain_Rate_Night",
         "AMSR2_Wind_Speed_Day",
         "AMSR2_Wind_Speed_Night",
-
         "AMSRU2_Snow_Water_Equivalent_Daily",
         "AMSRU2_Snow_Water_Equivalent_5Day",
         "AMSRU2_Snow_Water_Equivalent_Monthly",
@@ -297,7 +364,6 @@
         "LPRM_AMSR2_Surface_Soil_Moisture_C1_Band_Night_Daily",
         "LPRM_AMSR2_Downscaled_Surface_Soil_Moisture_C1_Band_Day_Daily",
         "LPRM_AMSR2_Downscaled_Surface_Soil_Moisture_C1_Band_Night_Daily",
-
         "AMSUA_NOAA15_Brightness_Temp_Channel_1",
         "AMSUA_NOAA15_Brightness_Temp_Channel_2",
         "AMSUA_NOAA15_Brightness_Temp_Channel_3",
@@ -343,13 +409,10 @@
         "AMSUA_NOAA17_Brightness_Temp_Channel_13",
         "AMSUA_NOAA17_Brightness_Temp_Channel_14",
         "AMSUA_NOAA17_Brightness_Temp_Channel_15",
-
         "CYGNSS_L3_Wind_Speed_Daily",
-
         "CCMP_REMSS_Meridional_Wind_Speed_Monthly",
         "CCMP_REMSS_Scalar_Wind_Speed_Monthly",
         "CCMP_REMSS_Zonal_Wind_Speed_Monthly",
-
         "SMAP_L1_Passive_Enhanced_Brightness_Temp_Fore_H",
         "SMAP_L1_Passive_Enhanced_Brightness_Temp_Aft_H",
         "SMAP_L1_Passive_Enhanced_Brightness_Temp_Fore_V",
@@ -429,7 +492,6 @@
         "SMAP_L4_Mean_Heterotrophic_Respiration",
         "SMAP_L4_Emult_Average",
         "SMAP_L4_Frozen_Area",
-
         "AMSRE_Surface_Rain_Rate_Day",
         "AMSRE_Surface_Rain_Rate_Night",
         "AMSRE_Surface_Precipitation_Rate_Day",
@@ -443,7 +505,6 @@
         "AMSRE_Sea_Ice_Concentration_12km",
         "AMSRE_Sea_Ice_Concentration_25km",
         "AMSRE_Snow_Depth_Over_Ice",
-
         "AIRS_CO_Total_Column_Day",
         "AIRS_CO_Total_Column_Night",
         "AIRS_Precipitation_Day",
@@ -510,7 +571,6 @@
         "AIRS_L3_Surface_Relative_Humidity_Monthly_Night",
         "AIRS_L3_Surface_Air_Temperature_Monthly_Day",
         "AIRS_L3_Surface_Air_Temperature_Monthly_Night",
-
         "OMPS_Aerosol_Index",
         "OMPS_Aerosol_Index_PyroCumuloNimbus",
         "OMPS_Ozone_Total_Column",
@@ -518,8 +578,6 @@
         "OMPS_SO2_Lower_Troposphere",
         "OMPS_SO2_Middle_Troposphere",
         "OMPS_SO2_Upper_Troposphere_and_Stratosphere",
-
-
         "OMI_Absorbing_Aerosol_Optical_Depth",
         "OMI_Absorbing_Aerosol_Optical_Thickness_MW_388",
         "OMI_Aerosol_Index",
@@ -534,14 +592,12 @@
         "OMI_Ozone_DOAS_Total_Column",
         "OMI_Ozone_TOMS_Total_Column",
         "OMI_Nitrogen_Dioxide_Tropo_Column",
-
         "OCO-2_Carbon_Dioxide_Total_Column_Average",
         "OCO-2_Carbon_Dioxide_Global_Mean_Difference",
         "OCO-2_Solar_Induced_Florescence_757nm",
         "OCO-2_Solar_Induced_Florescence_771nm",
         "OCO-2_Solar_Induced_Florescence_Blended",
         "OCO-2_Water_Vapor_Total_Column_Average",
-
         "MLS_CO_215hPa_Day",
         "MLS_CO_215hPa_Night",
         "MLS_HNO3_46hPa_Day",
@@ -556,10 +612,8 @@
         "MLS_Temperature_46hPa_Night",
         "MLS_H2O_46hPa_Day",
         "MLS_H2O_46hPa_Night",
-
         "MEaSUREs_Daily_Landscape_Freeze_Thaw_AMSRE",
         "MEaSUREs_Daily_Landscape_Freeze_Thaw_SSMI",
-
         "OSCAR_Sea_Surface_Currents_Meridional",
         "OSCAR_Sea_Surface_Currents_Zonal",
         "TOPEX-Poseidon_JASON_Sea_Surface_Height_Anomalies_GDR_Cycles",
@@ -579,15 +633,12 @@
         "GRACE_Tellus_Liquid_Water_Equivalent_Thickness_Ocean_EOF_GFZ",
         "GRACE_Tellus_Liquid_Water_Equivalent_Thickness_Ocean_EOF_JPL",
         "GRACE_Tellus_Liquid_Water_Equivalent_Thickness_Ocean_EOF_CSR",
-
         "CALIPSO_Wide_Field_Camera_Radiance_v3-01",
         "CALIPSO_Wide_Field_Camera_Radiance_v3-02",
-
         "SWDB_Aerosol_Optical_Thickness_550nm_Daily",
         "SWDB_Aerosol_Angstrom_Exponent_Daily",
         "SWDB_Aerosol_Optical_Thickness_550nm_Monthly",
         "SWDB_Aerosol_Angstrom_Exponent_Monthly",
-
         "SSMI_DMSP_F8_Cloud_Liquid_Water_Over_Oceans_Ascending",
         "SSMI_DMSP_F8_Cloud_Liquid_Water_Over_Oceans_Descending",
         "SSMI_DMSP_F8_Water_Vapor_Over_Oceans_Ascending",
@@ -652,10 +703,8 @@
         "SSMI_DMSP_F17_Rain_Rate_Over_Oceans_Descending",
         "SSMI_DMSP_F17_Wind_Speed_Over_Oceans_Ascending",
         "SSMI_DMSP_F17_Wind_Speed_Over_Oceans_Descending",
-
         "SSMIS_Sea_Ice_Concentration",
         "SSMIS_Sea_Ice_Concentration_Snow_Extent",
-
         "MISR_AM1_Ellipsoid_Radiance_RGB_AA",
         "MISR_AM1_Ellipsoid_Radiance_RGB_AF",
         "MISR_AM1_Ellipsoid_Radiance_RGB_AN",
@@ -682,16 +731,13 @@
         "MISR_Aerosol_Optical_Depth_Avg_Green_Monthly",
         "MISR_Radiance_Average_Infrared_Color_Monthly",
         "MISR_Directional_Hemispherical_Reflectance_Average_Natural_Color_Monthly",
-
         "RSS_Merged_Wind_Climatology_Monthly",
         "RSS_Total_Precipitable_Water_Climatology_Monthly",
         "MEaSUREs_Ice_Velocity_Greenland",
         "MEaSUREs_Ice_Velocity_Antarctica",
         "MEaSUREs_Sea_Ice_Snow_Extent",
-
         "LIS_ISS_Flash_Count",
         "LIS_ISS_Flash_Radiance",
-
         "LIS_High_Resolution_Full_Climatology_LIS_Raw_Flashes",
         "LIS_High_Resolution_Full_Climatology_LIS_Scaled_Flashes",
         "LIS_High_Resolution_Full_Climatology_LIS_Flash_Rate_Climatology",
@@ -700,22 +746,17 @@
         "LIS_Very_High_Resolution_Lightning_Full_Climatology_LIS_Mean_Flash_Rate",
         "LIS_Very_High_Resolution_Lightning_Monthly_Climatology_LIS_Mean_Flash_Rate",
         "LIS_Very_High_Resolution_Lightning_Seasonal_Climatology_LIS_Mean_Flash_Rate",
-
         "LIS_TRMM_Flash_Radiance",
         "OTD_OrbView1_Flash_Radiance",
-
         "TRMM_Precipitation_Rate_Asc",
         "TRMM_Precipitation_Rate_Dsc",
         "TRMM_Brightness_Temp_Asc",
         "TRMM_Brightness_Temp_Dsc",
-
         "OTD_High_Resolution_Full_Climatology_OTD_Raw_Flashes",
         "OTD_High_Resolution_Full_Climatology_OTD_Scaled_Flashes",
         "OTD_High_Resolution_Full_Climatology_OTD_Flash_Rate_Climatology",
-
         "OLS_DMSP_F12_Digital_Derived_Lightning",
         "OLS_DMSP_F10_Digital_Derived_Lightning",
-
         "Aquarius_Soil_Moisture_Daily",
         "Aquarius_Soil_Moisture_Weekly",
         "Aquarius_Wind_Speed_L3_Daily",
@@ -725,7 +766,6 @@
         "Aquarius_Sea_Surface_Salinity_L3_Monthly",
         "Aquarius_Sea_Surface_Salinity_L3_7Day_Snapshot",
         "Aquarius_Sea_Surface_Salinity_L3_7Day_RunningMean",
-
         "CERES_EBAF_TOA_CRE_Net_Flux_Monthly",
         "CERES_EBAF_TOA_CRE_Longwave_Flux_Monthly",
         "CERES_EBAF_TOA_CRE_Shortwave_Flux_Monthly",
@@ -791,7 +831,6 @@
         "CERES_Terra_Surface_Longwave_Flux_Down_Clear_Sky_Monthly",
         "CERES_Terra_Surface_Shortwave_Flux_Direct_Clear_Sky_Monthly",
         "CERES_Terra_Surface_Shortwave_Flux_Diffuse_Clear_Sky_Monthly",
-
         "MOPITT_CO_Daily_Total_Column_L2",
         "MOPITT_CO_Daily_Total_Column_Day",
         "MOPITT_CO_Daily_Total_Column_Night",
@@ -801,7 +840,6 @@
         "MOPITT_CO_Monthly_Total_Column_Night",
         "MOPITT_CO_Monthly_Surface_Mixing_Ratio_Day",
         "MOPITT_CO_Monthly_Surface_Mixing_Ratio_Night",
-
         "GLDAS_Surface_Total_Precipitation_Rate_Monthly",
         "GLDAS_Underground_Soil_Moisture_Monthly",
         "GLDAS_Near_Surface_Air_Temperature_Monthly",
@@ -811,11 +849,9 @@
         "NLDAS_Surface_Total_Precipitation_Primary_Monthly",
         "NLDAS_Near_Surface_Air_Temperature_Primary_Monthly",
         "NLDAS_Surface_Total_Precipitation_Secondary_Monthly",
-
         "OMI_UV_Erythemal_Dose_Rate",
         "OMI_UV_Index",
         "OMI_UV_Erythemal_Daily_Dose",
-
         "MERRA2_Surface_Skin_Temperature_Monthly",
         "MERRA2_Surface_Pressure_Monthly",
         "MERRA2_2m_Air_Temperature_Monthly",
@@ -846,13 +882,11 @@
         "MERRA2_Convective_Rainwater_Source_700hPa_Monthly",
         "Daymet_Maximum_Air_Temp_Daily",
         "Daymet_Minimum_Air_Temp_Daily",
-
         "Land_Mask",
         "ASTER_GDEM_Color_Index",
         "ASTER_GDEM_Color_Shaded_Relief",
         "ASTER_GDEM_Greyscale_Shaded_Relief",
         "SRTM_Color_Index",
-
         "GRanD_Reservoirs",
         "GRanD_Dams",
         "Nuclear_Power_Plant_Locations",
@@ -909,7 +943,6 @@
         "Mammal_Richness_Grids_Critically_Endangered_Species_2013",
         "Mammal_Richness_Grids_Endangered_Species_2013",
         "Mammal_Richness_Grids_All_Threats_2013",
-
         "Coastlines",
         "Reference_Features",
         "Reference_Labels",
@@ -918,7 +951,6 @@
         "MODIS_Terra_Data_No_Data",
         "MODIS_Aqua_Data_No_Data",
         "World_Database_on_Protected_Areas",
-
         "OrbitTracks_Aqua_Ascending",
         "OrbitTracks_Aqua_Descending",
         "OrbitTracks_Aura_Ascending",
