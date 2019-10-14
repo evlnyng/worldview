@@ -10,38 +10,32 @@ cache:
 
 matrix:
   include:
+
     - os: osx
       language: node_js
       node_js: '8.15.1'
+      env:
+        - E2E=true
       addons:
         chrome: stable
         firefox: latest
       before_install:
          - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
-      script:
-        if: branch =~ /^dependabot\/.*$/
-          - npm run build
-          - npm run start &
-          - npm run e2e:headless:chrome
-          - npm run e2e:headless:firefox
 
-    # - os: osx
-    #   language: node_js
-    #   node_js: lts/* # latest LTS Node.js release
-    #   addons:
-    #     chrome: stable
-    #     firefox: latest
+    - os: osx
+      language: node_js
+      node_js: lts/* # latest LTS Node.js release
 
-    # - os: linux
-    #   dist: xenial
-    #   language: python
-    #   node_js: '8.15.1'
-    #   python: '3.7'
-    #   sudo: required
-    #   before_install:
-    #     - python --version
-    #     - python3 --version
-    #     - nvm install 8.15.1
+    - os: linux
+      dist: xenial
+      language: python
+      node_js: '8.15.1'
+      python: '3.7'
+      sudo: required
+      before_install:
+        - python --version
+        - python3 --version
+        - nvm install 8.15.1
 
     # - os: linux
     #   dist: xenial
@@ -95,4 +89,23 @@ matrix:
     #       - c:/Python37/Scripts
 
 install: npm install
-# script: npm test
+jobs:
+  include:
+    # Run unit tests on every build
+    - stage: unit tests
+      script: npm test
+
+    # Only run e2e on the specified OSX build
+    - stage: e2e tests
+      if: os = osx AND env(E2E)
+      script:
+        - npm run build
+        - npm run start &
+        - npm run e2e:headless:chrome
+        - npm run e2e:headless:firefox
+
+    - stage: browserstack
+      if: branch =~ /^dependabot\/.*$/ AND os = osx AND env(E2E)
+      script: travis_wait 60 npm run browserstack
+
+
