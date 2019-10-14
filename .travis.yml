@@ -8,29 +8,6 @@ cache:
   npm: true
   pip: true
 
-matrix:
-  include:
-
-    - os: osx
-      language: node_js
-      node_js: '8.15.1'
-      script: npm test
-
-    # - os: osx
-    #   language: node_js
-    #   node_js: lts/* # latest LTS Node.js release
-
-    - os: linux
-      dist: xenial
-      language: python
-      node_js: '8.15.1'
-      python: '3.7'
-      sudo: required
-      before_install:
-        - python --version
-        - python3 --version
-        - nvm install 8.15.1
-      script: npm test
 
     # - os: linux
     #   dist: xenial
@@ -86,6 +63,26 @@ matrix:
 
 jobs:
   include:
+    - stage: build
+      matrix:
+        include:
+          - os: osx
+            language: node_js
+            node_js: '8.15.1'
+            install: npm install
+            script: npm test
+          - os: linux
+            dist: xenial
+            language: python
+            node_js: '8.15.1'
+            python: '3.7'
+            sudo: required
+            before_install:
+              - python --version
+              - python3 --version
+              - nvm install 8.15.1
+            install: npm install
+            script: npm test
 
     - stage: e2e tests
       os: osx
@@ -110,6 +107,7 @@ jobs:
         - travis_wait 60 npm run browserstack
 
 stages:
+  - name: build
   # Only run e2e on the specified OSX build
   - name: e2e tests
     if: os = osx
