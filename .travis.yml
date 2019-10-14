@@ -8,19 +8,6 @@ cache:
   npm: true
   pip: true
 
-
-
-    # - os: linux
-    #   dist: xenial
-    #   language: python
-    #   node_js: 'lts/*'
-    #   python: '3.7'
-    #   sudo: required
-    #   before_install:
-    #     - python --version
-    #     - python3 --version
-    #     - nvm install lts/*
-
     # - os: windows
     #   language: node_js
     #   node_js: '8.15.1'
@@ -61,18 +48,35 @@ cache:
     #       - c:/Python37
     #       - c:/Python37/Scripts
 
+install: npm install
+script: npm test
 
 jobs:
   include:
     - stage: build
-      name: osx 1
+      name: OSX - Node 8.15.1
       os: osx
       language: node_js
       node_js: '8.15.1'
-      install: npm install
-      script: npm test
 
-    - name: linux
+    - name: OSX - Node lts
+      os: osx
+      language: node_js
+      node_js: '8.15.1'
+
+    - name: Linux - Node lts
+      os: linux
+      dist: xenial
+      language: python
+      node_js: 'lts/*'
+      python: '3.7'
+      sudo: required
+      before_install:
+        - python --version
+        - python3 --version
+        - nvm install lts/*
+
+    - name: Linux - Node 8.15.1
       os: linux
       dist: xenial
       language: python
@@ -83,10 +87,8 @@ jobs:
         - python --version
         - python3 --version
         - nvm install 8.15.1
-      install: npm install
-      script: npm test
 
-    - stage: e2e tests
+    - stage: E2E Tests
       os: osx
       language: node_js
       node_js: '8.15.1'
@@ -95,7 +97,6 @@ jobs:
         firefox: latest
       before_install:
          - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
-      install: npm install
       script:
         - npm run build
         - npm run start &
@@ -106,7 +107,6 @@ jobs:
       os: osx
       language: node_js
       node_js: '8.15.1'
-      install: npm install
       script:
         - npm run build
         - npm run start &
@@ -115,7 +115,7 @@ jobs:
 stages:
   - build
   # Only run e2e on the specified OSX build
-  - e2e tests
+  - E2E Tests
   # Run browserstack on dependabot branches
   - name: browserstack
     if: branch =~ /^dependabot\/.*$/
