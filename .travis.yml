@@ -9,6 +9,7 @@ cache:
   pip: true
 
 
+
     # - os: linux
     #   dist: xenial
     #   language: python
@@ -64,25 +65,27 @@ cache:
 jobs:
   include:
     - stage: build
-      matrix:
-        include:
-          - os: osx
-            language: node_js
-            node_js: '8.15.1'
-            install: npm install
-            script: npm test
-          - os: linux
-            dist: xenial
-            language: python
-            node_js: '8.15.1'
-            python: '3.7'
-            sudo: required
-            before_install:
-              - python --version
-              - python3 --version
-              - nvm install 8.15.1
-            install: npm install
-            script: npm test
+
+      - name: osx 1
+        os: osx
+        language: node_js
+        node_js: '8.15.1'
+        install: npm install
+        script: npm test
+
+      - name: linux
+        os: linux
+        dist: xenial
+        language: python
+        node_js: '8.15.1'
+        python: '3.7'
+        sudo: required
+        before_install:
+          - python --version
+          - python3 --version
+          - nvm install 8.15.1
+        install: npm install
+        script: npm test
 
     - stage: e2e tests
       os: osx
@@ -98,19 +101,22 @@ jobs:
         - npm run build
         - npm run start &
         - npm run e2e:headless:chrome
-        - npm run e2e:headless:firefox
+        # - npm run e2e:headless:firefox
 
     - stage: browserstack
+      os: osx
+      language: node_js
+      node_js: '8.15.1'
+      install: npm install
       script:
         - npm run build
         - npm run start &
         - travis_wait 60 npm run browserstack
 
 stages:
-  - name: build
+  - build
   # Only run e2e on the specified OSX build
-  - name: e2e tests
-    if: os = osx
+  - e2e tests
   # Run browserstack on dependabot branches
   - name: browserstack
     if: branch =~ /^dependabot\/.*$/
