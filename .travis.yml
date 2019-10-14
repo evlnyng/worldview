@@ -14,6 +14,7 @@ matrix:
     - os: osx
       language: node_js
       node_js: '8.15.1'
+      script: npm test
 
     # - os: osx
     #   language: node_js
@@ -29,6 +30,7 @@ matrix:
         - python --version
         - python3 --version
         - nvm install 8.15.1
+      script: npm test
 
     # - os: linux
     #   dist: xenial
@@ -81,12 +83,10 @@ matrix:
     #       - c:/Python37
     #       - c:/Python37/Scripts
 
-install: npm install
-
-script: npm test
 
 jobs:
   include:
+
     - stage: e2e tests
       os: osx
       language: node_js
@@ -96,6 +96,7 @@ jobs:
         firefox: latest
       before_install:
          - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
+      install: npm install
       script:
         - npm run build
         - npm run start &
