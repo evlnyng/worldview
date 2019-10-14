@@ -18,14 +18,12 @@ matrix:
         firefox: latest
       before_install:
          - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
-      stages:
-        - name: e2e tests
-          if: branch =~ /^dependabot\/.*$/
-          script:
-            - npm run build
-            - npm run start &
-            - npm run e2e:headless:chrome
-            - npm run e2e:headless:firefox
+      script:
+        if: branch =~ /^dependabot\/.*$/
+          - npm run build
+          - npm run start &
+          - npm run e2e:headless:chrome
+          - npm run e2e:headless:firefox
 
     # - os: osx
     #   language: node_js
@@ -97,4 +95,4 @@ matrix:
     #       - c:/Python37/Scripts
 
 install: npm install
-script: npm test
+# script: npm test
