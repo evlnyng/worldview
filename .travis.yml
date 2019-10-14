@@ -89,23 +89,24 @@ matrix:
     #       - c:/Python37/Scripts
 
 install: npm install
-jobs:
-  include:
-    # Run unit tests on every build
-    - stage: unit tests
-      script: npm test
+# jobs:
+#   include:
+#     # Run unit tests on every build
+#     - stage: unit tests
+#       script: npm test
 
-    # Only run e2e on the specified OSX build
-    - stage: e2e tests
-      if: os = osx AND env(E2E)
-      script:
-        - npm run build
-        - npm run start &
-        - npm run e2e:headless:chrome
-        - npm run e2e:headless:firefox
+#     # Only run e2e on the specified OSX build
+#     - stage: e2e tests
+#       if: os = osx AND env(E2E)
+#       script:
+#         - npm run build
+#         - npm run start &
+#         - npm run e2e:headless:chrome
+#         - npm run e2e:headless:firefox
 
-    - stage: browserstack
-      if: branch =~ /^dependabot\/.*$/ AND os = osx AND env(E2E)
-      script: travis_wait 60 npm run browserstack
+#     # Run browserstack on dependabot branches
+#     - stage: browserstack
+#       if: branch =~ /^dependabot\/.*$/ AND os = osx AND env(E2E)
+#       script: travis_wait 60 npm run browserstack
 
 
