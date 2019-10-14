@@ -7,12 +7,9 @@ cache:
     - .python
   npm: true
   pip: true
-install: npm install
-script: npm test
 
 matrix:
   include:
-
     - os: osx
       language: node_js
       node_js: '8.15.1'
@@ -106,4 +103,5 @@ matrix:
           - c:/Python37
           - c:/Python37/Scripts
 
-
+install: npm install
+script: npm test
