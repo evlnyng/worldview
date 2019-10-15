@@ -13,9 +13,7 @@ matrix:
       name: 'OSX - Dependabot e2e Chrome'
       language: node_js
       node_js: '8.15.1'
-      branches:
-        only:
-        - /^dependabot\/.*$/
+      if: branch =~ /^dependabot\/.*$/
       addons:
         chrome: stable
       before_install:
