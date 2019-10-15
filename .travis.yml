@@ -20,7 +20,8 @@ matrix:
       install: npm install
       script:
       - |
-        if [[ $TRAVIS_BRANCH =~ /^dependabot\/.*$/ ]]; then
+        echo $TRAVIS_BRANCH
+        if [[ $TRAVIS_BRANCH =~ ^dependabot\/ ]]; then
           npm run build
           npm start &
           npm run e2e:headless:chrome
