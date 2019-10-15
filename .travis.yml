@@ -1,115 +1,28 @@
 env:
   global:
     - MOZ_HEADLESS=1
+    - DEPENDABOT="/^dependabot\/.*$/"
 cache:
   directories:
     - node_modules
     - .python
   npm: true
   pip: true
-
-install: npm install
-
-script: npm test
-
-jobs:
+matrix:
   include:
-    - stage: "Build, E2E"
-
-      name: OSX - Node 8.15.1, E2E Tests
-      os: osx
+    - os: osx
+      name: 'OSX - Dependabot e2e Chrome'
       language: node_js
       node_js: '8.15.1'
       addons:
         chrome: stable
-        firefox: latest
       before_install:
          - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
+      install: npm install
       script:
-        - npm run build
-        - npm run start &
-        - npm run e2e:headless:chrome
-        # - npm run e2e:headless:firefox
-
-    - name: OSX - Node LTS
-      os: osx
-      language: node_js
-      node_js: '8.15.1'
-
-    - name: Linux - Node 8.15.1
-      os: linux
-      dist: xenial
-      language: python
-      node_js: '8.15.1'
-      python: '3.7'
-      sudo: required
-      before_install:
-        - python --version
-        - python3 --version
-        - nvm install 8.15.1
-
-    - name: Linux - Node LTS
-      os: linux
-      dist: xenial
-      language: python
-      node_js: 'lts/*'
-      python: '3.7'
-      sudo: required
-      before_install:
-        - python --version
-        - python3 --version
-        - nvm install lts/*
-
-    - name: Windows - Node 8.15.1
-      os: windows
-      language: node_js
-      node_js: '8.15.1'
-      before_install:
-        - choco install python3
-        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-        - python --version
-        - python -m ensurepip
-        - pip install virtualenv
-        - python -m venv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-      cache:
-        directories:
-          - $HOME/venv
-          - c:/Python37
-          - c:/Python37/Scripts
-
-    - name: Windows - Node LTS
-      os: windows
-      language: node_js
-      node_js: lts/* # latest LTS Node.js release
-      before_install:
-        - choco install python3
-        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-        - python --version
-        - python -m ensurepip
-        - pip install virtualenv
-        - python -m venv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-      cache:
-        directories:
-          - $HOME/venv
-          - c:/Python37
-          - c:/Python37/Scripts
-
-    - stage: browserstack
-      os: osx
-      language: node_js
-      node_js: '8.15.1'
-      script:
-        - npm run build
-        - npm run start &
-        - travis_wait 60 npm run browserstack
-
-stages:
-  - build
-  # Run browserstack on dependabot branches
-  - name: browserstack
-    if: branch =~ /^dependabot\/.*$/
-
-
-
+      - |
+        if [[ $TRAVIS_PULL_REQUEST_BRANCH =~ $DEPENDABOT ]]; then
+          npm run build
+          npm start &
+          npm run e2e:headless:chrome
+        fi
