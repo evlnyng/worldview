@@ -21,7 +21,7 @@ matrix:
       install: npm install
       script:
       - |
-        if [ $TRAVIS_PULL_REQUEST_BRANCH =~ $DEPENDABOT ]; then
+        if [[ $TRAVIS_PULL_REQUEST_BRANCH =~ $DEPENDABOT ]]; then
           npm run build
           npm start &
           npm run e2e:headless:chrome
