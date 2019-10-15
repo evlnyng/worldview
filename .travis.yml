@@ -14,7 +14,7 @@ script: npm test
 
 jobs:
   include:
-    - stage: build
+    - stage: "Build, E2E"
 
       name: OSX - Node 8.15.1, E2E Tests
       os: osx
@@ -64,9 +64,6 @@ jobs:
       os: windows
       language: node_js
       node_js: '8.15.1'
-      addons:
-        chrome: stable
-        firefox: latest
       before_install:
         - choco install python3
         - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
@@ -85,9 +82,6 @@ jobs:
       os: windows
       language: node_js
       node_js: lts/* # latest LTS Node.js release
-      addons:
-        chrome: stable
-        firefox: latest
       before_install:
         - choco install python3
         - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
