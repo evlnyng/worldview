@@ -15,11 +15,12 @@ script: npm test
 jobs:
   include:
     - stage: build
+
       name: OSX - Node 8.15.1, E2E Tests
       os: osx
       language: node_js
       node_js: '8.15.1'
-          addons:
+      addons:
         chrome: stable
         firefox: latest
       before_install:
