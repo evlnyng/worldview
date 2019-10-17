@@ -14,16 +14,10 @@ const capabilities = createCapabilities(
       os_version: ['Mojave']
     }
     // {
-    //   browser: 'safari',
-    //   browser_version: ['11.1'],
-    //   os: ['OS X'],
-    //   os_version: ['High Sierra']
-    // },
-    // {
     //   browser: 'chrome',
-    //   browser_version: ['76.0'],
-    //   os: ['Windows', 'OS X'],
-    //   os_version: ['10', 'Mojave']
+    //   browser_version: ['77.0'],
+    //   os: ['Windows'],
+    //   os_version: ['10']
     // },
     // {
     //   browser: 'ie',
