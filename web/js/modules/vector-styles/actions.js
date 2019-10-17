@@ -1,7 +1,8 @@
 import {
   SET_FILTER_RANGE,
   CLEAR_VECTORSTYLE,
-  SET_VECTORSTYLE
+  SET_VECTORSTYLE,
+  SET_SELECTED_VECTORS
 } from './constants';
 import {
   setRange as setRangeSelector,
@@ -33,6 +34,14 @@ export function setFilterRange(layerId, props, index, groupName) {
       props
     });
   };
+}
+export function setSelected(object) {
+  return (dispatch, getState) => {
+    dispatch({
+      type: SET_SELECTED_VECTORS,
+      object
+    })
+  }
 }
 /**
  * Action to set custom vectorStyle

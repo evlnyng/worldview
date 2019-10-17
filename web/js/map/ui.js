@@ -33,7 +33,6 @@ import { CHANGE_PROJECTION } from '../modules/projection/constants';
 import { SELECT_DATE } from '../modules/date/constants';
 import { openCustomContent } from '../modules/modal/actions';
 import { CHANGE_UNITS, USE_GREAT_CIRCLE } from '../modules/measure/constants';
-import VectorMetaTable from '../components/vector-metadata/table';
 import Cache from 'cachai';
 import * as layerConstants from '../modules/layers/constants';
 import * as compareConstants from '../modules/compare/constants';
@@ -53,6 +52,8 @@ import {
 } from 'lodash';
 import { CLEAR_ROTATE, RENDERED, UPDATE_MAP_UI, FITTED_TO_LEADING_EXTENT } from '../modules/map/constants';
 import { getLeadingExtent } from '../modules/map/util';
+import vectorDialog from '../containers/vector-dialog';
+import { setSelected } from '../modules/vector-styles/actions';
 
 export function mapui(models, config, store, ui) {
   var layerBuilder, createLayer;
@@ -993,51 +994,47 @@ export function mapui(models, config, store, ui) {
     };
     map.on('rendercomplete', onRenderComplete);
     map.on('click', function (e) {
-      var metaTitle;
-      var def;
-      var metaArray = [];
-
+      let def;
+      let metaArray = [];
+      let selectedIdArray = [];
+      let selectedFeatures = [];
+      const state = store.getState();
+      const vectorStyles = config.vectorStyles;
       map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         def = lodashGet(layer, 'wv.def');
         if (!def) return;
-        metaTitle = def.title;
-        if (def.vectorData && def.vectorData.id) {
+
+        if (def.vectorData && def.vectorData.id && def.title) {
           const features = feature.getProperties();
           const vectorDataId = def.vectorData.id;
           const data = config.vectorData[vectorDataId];
+
           const obj = {
             legend: data,
-            features: features
+            features: features,
+            id: vectorDataId,
+            title: def.title,
+            featureId: vectorDataId + features[def['feature-id']]
           };
           metaArray.push(obj);
+          selectedIdArray.push(vectorDataId);
+          selectedFeatures.push(features[def['feature-id']])
         }
       });
-
-      var uniqueMeta = metaArray
-        .map(e => e.layer)
-        .map((e, i, final) => final.indexOf(e) === i && i)
-        .filter(e => metaArray[e]).map(e => metaArray[e]);
-
-      if (uniqueMeta.length) {
-        const vectorPointMeta = uniqueMeta[0];
-        const vectorDataId = def.vectorData.id;
-        const legend = vectorPointMeta.legend;
-        const features = vectorPointMeta.features;
-        store.dispatch(openCustomContent('Vector' + vectorDataId,
+      if (metaArray.length) {
+        let vectorStyleId = def.vectorStyle.id;
+        setStyleFunction(def, vectorStyleId, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures });
+        // store.dispatch(setSelected({ id: selectedIdArray, features: selectedFeatures }))
+        store.dispatch(openCustomContent('Vector-dialog' + e.pixel[0] + e.pixel[1],
           {
-            headerText: metaTitle,
             backdrop: false,
             clickableBehindModal: true,
             desktopOnly: true,
             wrapClassName: 'vector-modal-wrap',
             modalClassName: 'vector-modal light',
-            bodyComponent: VectorMetaTable,
-            bodyComponentProps: {
-              metaTitle: metaTitle,
-              metaFeatures: features,
-              metaLegend: legend
-            },
-            isDraggable: true
+            CompletelyCustomModal: vectorDialog,
+            customProps: { vectorMetaArray: metaArray },
+            onClose: () => setStyleFunction(def, vectorStyleId, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures, reset: true })
           }
         ));
       };
