@@ -41,14 +41,14 @@ try {
       Nightwatch.CliRunner(argv)
         .setup(null, () => {
           // Code to stop browserstack local after end of parallel test
-          console.log('Ran setup');
+          console.log('************ Ran setup ************');
           bs_local.stop(() => {
             process.exitCode = 0;
           });
         })
         .runTests(() => {
           // Code to stop browserstack local after end of single test
-          console.log('Ran runTests');
+          console.log('************ Ran runTests ************');
           bs_local.stop(() => {
             if (bs_local.pid && process) {
               process.exitCode = 0;
