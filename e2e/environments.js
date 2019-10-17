@@ -16,8 +16,8 @@ const capabilities = createCapabilities(
     {
       browser: 'chrome',
       browser_version: ['77.0'],
-      os: ['Windows'],
-      os_version: ['10']
+      os: ['OS X'],
+      os_version: ['High Sierra']
     },
     {
       browser: 'ie',

@@ -1,91 +1,23 @@
 matrix:
-  allow_failures:
-    - os: windows
 
   include:
 
-    - os: osx
-      name: 'Node.js lts/* - E2E / Browserstack'
-      language: node_js
-      node_js: lts/* # latest LTS Node.js release
-      addons:
-        chrome: stable
+    - os: linux
+      dist: xenial
+      language: python
+      node_js: 'lts/*'
+      python: '3.7'
+      sudo: required
+
+      install: npm install
       before_install:
-         - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
+        - python --version
+        - python3 --version
+        - nvm install lts/*
       script:
         - IGNORE_ERRORS=true npm run build
         - npm run start &
-        - travis_wait 45 npm run browserstack
-        # - |
-        #   if [[ $TRAVIS_BRANCH =~ ^dependabot\/ ]]; then
-        #     travis_wait 45 npm run browserstack
-        #   else
-        #     npm run e2e:headless:chrome
-        #   fi
-
-    # - os: osx
-    #   language: node_js
-    #   node_js: '8.15.1'
-
-    # - os: linux
-    #   dist: xenial
-    #   language: python
-    #   node_js: 'lts/*'
-    #   python: '3.7'
-    #   sudo: required
-    #   before_install:
-    #     - python --version
-    #     - python3 --version
-    #     - nvm install lts/*
-    #   script:
-    #     - IGNORE_ERRORS=true npm run build
-    #     - npm run start &
-    #     - travis_wait 45 npm run browserstack
-
-    # # - os: linux
-    # #   dist: xenial
-    # #   language: python
-    # #   node_js: '8.15.1'
-    # #   python: '3.7'
-    # #   sudo: required
-    # #   before_install:
-    # #     - python --version
-    # #     - python3 --version
-    # #     - nvm install 8.15.1
-
-    # # - os: windows
-    # #   language: node_js
-    # #   node_js: '8.15.1'
-    # #   before_install:
-    # #     - choco install python3
-    # #     - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-    # #     - python --version
-    # #     - python -m ensurepip
-    # #     - pip install virtualenv
-    # #     - python -m venv $HOME/venv
-    # #     - source $HOME/venv/Scripts/activate
-    # #   cache:
-    # #     directories:
-    # #       - $HOME/venv
-    # #       - c:/Python37
-    # #       - c:/Python37/Scripts
-
-    # # - os: windows
-    # #   language: node_js
-    # #   node_js: lts/* # latest LTS Node.js release
-    # #   before_install:
-    # #     - choco install python3
-    # #     - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-    # #     - python --version
-    # #     - python -m ensurepip
-    # #     - pip install virtualenv
-    # #     - python -m venv $HOME/venv
-    # #     - source $HOME/venv/Scripts/activate
-    # #   cache:
-    # #     directories:
-    # #       - $HOME/venv
-    # #       - c:/Python37
-    # #       - c:/Python37/Scripts
+      after_success: travis_wait 50 npm run browserstack && sleep 10
 
 cache:
   directories:
@@ -93,7 +25,3 @@ cache:
     - .python
   npm: true
   pip: true
-
-install: npm install
-
-script: npm test

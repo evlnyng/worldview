@@ -18,7 +18,7 @@ const nightwatchConfig = {
     'browserstack.local': true,
     'browserstack.debug': true,
     'browserstack.localIdentifier': ('wvtester19234' + process.env.BROWSERSTACK_USER).replace(/[^a-zA-Z0-9]/g, ''),
-    build: 'nightwatch-browserstack',
+    build: 'nightwatch-bs-' + process.env.BUILD_ID,
     applicationCacheEnabled: false,
     webStorageEnabled: false,
     marionette: true
