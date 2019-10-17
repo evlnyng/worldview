@@ -1,6 +1,6 @@
 const environments = require('./environments.js');
 const glob = require('glob');
-const files = glob.sync('./e2e/features/animation/animation-test.js');
+const files = glob.sync('./e2e/features/**/*-test.js');
 
 const nightwatchConfig = {
   output_folder: './e2e/reports',

@@ -12,19 +12,19 @@ const capabilities = createCapabilities(
       browser_version: ['69.0'],
       os: ['OS X'],
       os_version: ['Mojave']
+    },
+    {
+      browser: 'chrome',
+      browser_version: ['77.0'],
+      os: ['Windows'],
+      os_version: ['10']
+    },
+    {
+      browser: 'ie',
+      browser_version: ['11.0'],
+      os: ['Windows'],
+      os_version: ['10']
     }
-    // {
-    //   browser: 'chrome',
-    //   browser_version: ['77.0'],
-    //   os: ['Windows'],
-    //   os_version: ['10']
-    // },
-    // {
-    //   browser: 'ie',
-    //   browser_version: ['11.0'],
-    //   os: ['Windows'],
-    //   os_version: ['10']
-    // }
   ]
 );
 
