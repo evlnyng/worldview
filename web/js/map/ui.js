@@ -1,7 +1,4 @@
-import lodashFindIndex from 'lodash/findIndex';
-import lodashEach from 'lodash/each';
-import lodashForOwn from 'lodash/forOwn';
-import lodashThrottle from 'lodash/throttle';
+import { groupBy, chain as lodashChain, throttle as lodashThrottle, forOwn as lodashForOwn, each as lodashEach, findIndex as lodashFindIndex } from 'lodash';
 import util from '../util/util';
 import OlMap from 'ol/Map';
 import OlView from 'ol/View';
@@ -994,47 +991,55 @@ export function mapui(models, config, store, ui) {
     };
     map.on('rendercomplete', onRenderComplete);
     map.on('click', function (e) {
-      let def;
       let metaArray = [];
       let selectedIdArray = [];
       let selectedFeatures = [];
+      let defs = [];
       const state = store.getState();
       const vectorStyles = config.vectorStyles;
       map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-        def = lodashGet(layer, 'wv.def');
+        const def = lodashGet(layer, 'wv.def');
         if (!def) return;
 
         if (def.vectorData && def.vectorData.id && def.title) {
           const features = feature.getProperties();
           const vectorDataId = def.vectorData.id;
           const data = config.vectorData[vectorDataId];
-
           const obj = {
             legend: data,
             features: features,
             id: vectorDataId,
-            title: def.title,
+            title: def['feature-title'] ? features[def['feature-title']] : '',
             featureId: vectorDataId + features[def['feature-id']]
           };
           metaArray.push(obj);
           selectedIdArray.push(vectorDataId);
-          selectedFeatures.push(features[def['feature-id']])
+          selectedFeatures.push(features[def['feature-id']]);
+          defs.push(def);
         }
       });
       if (metaArray.length) {
-        let vectorStyleId = def.vectorStyle.id;
-        setStyleFunction(def, vectorStyleId, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures });
-        // store.dispatch(setSelected({ id: selectedIdArray, features: selectedFeatures }))
+        //https://stackoverflow.com/a/23600960/4589331
+        const dialogObject = groupBy(metaArray, 'id');
+        defs.forEach((def) => {
+          setStyleFunction(def, def.vectorStyle.id, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures });
+        })
+
         store.dispatch(openCustomContent('Vector-dialog' + e.pixel[0] + e.pixel[1],
           {
             backdrop: false,
             clickableBehindModal: true,
             desktopOnly: true,
+            isDraggable: true,
             wrapClassName: 'vector-modal-wrap',
             modalClassName: 'vector-modal light',
             CompletelyCustomModal: vectorDialog,
-            customProps: { vectorMetaArray: metaArray },
-            onClose: () => setStyleFunction(def, vectorStyleId, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures, reset: true })
+            customProps: { vectorMetaObject: dialogObject },
+            onClose: () => {
+              defs.forEach((def) => {
+                setStyleFunction(def, def.vectorStyle.id, vectorStyles, null, state, { id: selectedIdArray, features: selectedFeatures, reset: true })
+              })
+            }
           }
         ));
       };

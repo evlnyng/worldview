@@ -26,7 +26,6 @@
 }
 
 .vector-modal .vector-info-icon {
-  position: absolute;
   font-size: 8px;
   border: 1px solid #495057;
   width: 13px;
@@ -34,8 +33,7 @@
   text-align: center;
   border-radius: 50%;
   padding-top: 1px;
-  margin-top: 0;
-  right: 10px;
+  margin-right: 10px;
 }
 
 .vector-modal .vector-info-icon:hover {

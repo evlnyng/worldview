@@ -12,33 +12,43 @@ class VectorDialog extends React.Component {
     this.updateIndex = this.updateIndex.bind(this);
   }
   updateIndex(activeIndex) {
-    this.setState(activeIndex);
+    if (activeIndex === this.state.activeIndex) return;
+    this.setState({ activeIndex });
   }
   render() {
     const { toggleWithClose, customProps } = this.props;
-    const { vectorMetaArray } = customProps;
-    console.log(vectorMetaArray)
+    const { vectorMetaObject } = customProps;
     const { activeIndex } = this.state;
+    let navArray = [];
+    let keyArray = [];
+    let i = 0;
+    for (let [key, value] of Object.entries(vectorMetaObject)) {
+      const index = i;
+      keyArray.push(key);
+      navArray.push(
+        <NavItem
+          key={key}
+          className="vector-meta-nav-item"
+          active={activeIndex === i}
+        >
+          <NavLink onClick={() => this.updateIndex(index)}>
+            {key + ' [' + (value.length) + ']'}
+          </NavLink>
+        </NavItem>
+      )
+      i++;
+    }
+    const activeMetaArray = vectorMetaObject[keyArray[activeIndex]];
+    console.log(activeMetaArray);
     return (
       <React.Fragment>
         <ModalHeader toggle={toggleWithClose}>
           <Nav tabs id="vector-meta-nav" className="vector-meta-nav">
-            {vectorMetaArray.map((meta, i) => (
-              <NavItem
-                key={meta.featureId}
-                className="vector-meta-nav-item"
-                active={activeIndex === i}
-              >
-                <NavLink onClick={() => this.updateIndex(i)}>
-                  {meta.title}
-                </NavLink>
-              </NavItem>
-            )
-            )}
+            {navArray}
           </Nav>
         </ ModalHeader>
         <ModalBody>
-          <VectorMetaTable metaFeatures={vectorMetaArray[activeIndex].features} metaLegend={vectorMetaArray[activeIndex].legend} />
+          <VectorMetaTable metaArray={activeMetaArray} title={keyArray[activeIndex]} />
         </ModalBody>
       </React.Fragment>
     )
